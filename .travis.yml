@@ -5,3 +5,12 @@ services:
 script:
     - docker build -t juanmve/node .
     - docker images juanmve/node
+
+before_deploy:
+    - docker login -u juanmve -p 2498Eslava
+
+deploy:
+    provider: script
+    script: docker push juanmve/node
+    on:
+        branch: master
